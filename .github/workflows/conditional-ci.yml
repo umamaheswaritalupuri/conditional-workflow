@@ -1,4 +1,4 @@
-name: conditional-workflow
+name: Conditional CI Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'feature/**'
 jobs:
   build:
-    if: startsWith(github.ref_name, 'feature/')
+    if: startsWith(github.ref, 'refs/heads/feature/') && success()
     runs-on: ubuntu-latest
     steps:
       - run: echo "build"
